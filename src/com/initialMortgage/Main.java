@@ -61,10 +61,10 @@ public class FirstMortgageClass {
         short totalNumOfPayments = (short)(periodYears * MONTHS_IN_YEAR);
         double monthlyInterestPercent = calcMonthlyInterest(yearlyInterest);
         double remainingBalance =
-                (principal * (
-                        Math.pow(1+monthlyInterestPercent, totalNumOfPayments)
-                                - Math.pow(1+monthlyInterestPercent, numPaymentsPaid)
-                )) / (Math.pow(1+monthlyInterestPercent, totalNumOfPayments) - 1);
+                (principal *
+                        (Math.pow(1+monthlyInterestPercent, totalNumOfPayments) - Math.pow(1+monthlyInterestPercent, numPaymentsPaid))
+                )
+                        / (Math.pow(1+monthlyInterestPercent, totalNumOfPayments) - 1);
         return remainingBalance;
     }
 }
