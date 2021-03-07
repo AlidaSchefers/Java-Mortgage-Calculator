@@ -1,16 +1,15 @@
 package com.initialMortgage;
 
 import java.text.NumberFormat;
-import java.util.Scanner;
 
-public class FirstMortgageClass {
+public class Main {
     final static byte MONTHS_IN_YEAR = 12;
     final static byte PERCENT = 100;
 
     public static void main(String[] args) {
-        int principal = (int)readNumber("Principal ($1K - $1M): ", 1000, 1_000_000);
-        float yearlyInterest = (float)readNumber("Annual Interest Rate: ", 1, 30);
-        byte periodYears = (byte)readNumber("Period (Years): ", 1,30);
+        int principal = (int) Console.readNumber("Principal ($1K - $1M): ", 1000, 1_000_000);
+        float yearlyInterest = (float) Console.readNumber("Annual Interest Rate: ", 1, 30);
+        byte periodYears = (byte) Console.readNumber("Period (Years): ", 1,30);
 
         printMortgage(principal, yearlyInterest, periodYears);
         printPaymentSchedule(principal, yearlyInterest, periodYears);
@@ -29,18 +28,7 @@ public class FirstMortgageClass {
             System.out.println(NumberFormat.getCurrencyInstance().format(calcRemainingBalance(principal, yearlyInterest, periodYears, month)));
     }
 
-    public static double readNumber(String prompt, int min, int max) {
-        Scanner scanner = new Scanner(System.in);
-        double value;
-        while (true) {
-            System.out.print(prompt);
-            value = scanner.nextDouble();
-            if (value >= min && value <= max)
-                break;
-            System.out.println("Enter a number between " + min + " and " + max + ".");
-        }
-        return value;
-    };
+    ;
 
     public static double calculateMortgage(int principal, double yearlyInterest, byte periodYears) {
         double monthlyInterestPercent = calcMonthlyInterest(yearlyInterest);
