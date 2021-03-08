@@ -3,8 +3,9 @@ package com.initialMortgage;
 import java.util.Scanner;
 
 public class Console {
+    private static Scanner scanner = new Scanner(System.in); //this is private b/c this is an implementation detail (no other classes will use it)
+
     public static double readNumber(String prompt, int min, int max) {
-        Scanner scanner = new Scanner(System.in);
         double value;
         while (true) {
             System.out.print(prompt);
